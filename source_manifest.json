@@ -1,0 +1,12 @@
+{
+  "archive_date": "2026-09-09",
+  "source_file": "EVRP_Report.pdf",
+  "archived_file": "reports/EVRP_Report.pdf",
+  "bytes": 8991736,
+  "sha256": "81fa3163f9b8473c0096a869ea69d96bcb3af117e16bbe21380a9c86aa6b951c",
+  "preservation": "byte-identical copy",
+  "original_report_date": "April 2025",
+  "author_on_cover": "Yongjiang Liu",
+  "source_code_recovered": false,
+  "experiments_rerun": false
+}
