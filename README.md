@@ -1,37 +1,73 @@
-# Perturbation is All You Need: Electric Vehicle Routing
+# Perturbation is All You Need
 
-A research report by **Yongjiang Liu** on the Electric Vehicle Routing Problem (EVRP). The report studies how perturbation, local search and feasibility repair can improve routes under vehicle load and battery constraints.
+A research study of the **Electric Vehicle Routing Problem (EVRP)**: how to improve delivery routes while respecting vehicle load and battery constraints. Yongjiang Liu's report compares a greedy construction baseline with three independently applied search methods, examining route quality, variability and feasibility.
 
-[Read the original report](reports/EVRP_Report.pdf). The cover is dated April 2025 and names the University of Manchester School of Computer Science and supervisor Dr. Francisco Lobo.
+**[Read the original 64-page report](reports/EVRP_Report.pdf).** Its cover is dated April 2025 and names the University of Manchester School of Computer Science and supervisor Dr. Francisco Lobo.
 
-## Project approach
+> **中文概述：** 本研究关注电动车路径规划中的载重与电量约束，比较贪心构造、遗传算法、模拟退火和蚁群算法，并讨论扰动、局部搜索与可行性修复。当前保留的是原始研究报告，尚无可运行的原始求解器或实验数据；结果说明保留了论文中表格与叙述需要进一步核对的地方。
 
-The report describes a multi-stage greedy route constructor, followed by three independently applied search methods:
+## Project at a glance
 
-- A Genetic Algorithm with evolutionary search and route refinement.
-- Simulated Annealing with neighborhood perturbations and temperature-controlled acceptance.
-- Ant Colony Optimization with pheromone-guided construction and local search.
+| Item | Details |
+| --- | --- |
+| Project type | Individual research report |
+| Institution and date | University of Manchester, School of Computer Science; April 2025 |
+| Author and supervisor | Yongjiang Liu; Dr. Francisco Lobo |
+| Methods | Greedy construction, Genetic Algorithm, Simulated Annealing, Ant Colony Optimization, local search and feasibility checks |
+| Implementation described | A C++ solution validator; its source has not been recovered |
+| Available artifacts | Original report, evidence notes and a file-integrity manifest |
+| Status | Report preserved; original solver, experiment logs and benchmark files unavailable |
 
-A C++ solution validator is described for checking depot boundaries, customer visits, vehicle capacity, battery feasibility and total distance. The evaluation uses the IEEE WCCI 2020 EVRP benchmark family and discusses repeated runs, parameter settings and route visualizations.
+## Research questions
 
-## What is preserved
+The study asks how to construct feasible EVRP routes, how perturbation and local search can improve them, and how alternative search strategies compare across benchmark instances. It considers both route distance and the variability of repeated runs, while retaining the problem's capacity and battery constraints.
+
+## Design and method
+
+The report describes a multi-stage greedy route constructor as the baseline. It then evaluates three search approaches independently:
+
+| Method | Main search mechanism |
+| --- | --- |
+| Genetic Algorithm (GA) | Evolutionary search and route refinement |
+| Simulated Annealing (SA) | Neighbourhood perturbations with temperature-controlled acceptance |
+| Ant Colony Optimization (ACO) | Pheromone-guided construction and local search |
+
+The described C++ validator checks depot boundaries, customer visits, vehicle capacity, battery feasibility and total route distance. Evaluation uses the IEEE WCCI 2020 EVRP benchmark family, with repeated runs, parameter settings and route visualizations discussed in the report.
+
+These are methods documented in the report. The repository currently supplies the written study rather than executable implementations of those methods.
+
+## Reading the report
+
+Start with the problem and constraints, then read the construction and search methods before interpreting the evaluation. For the numerical comparison:
+
+1. Read the benchmark overview on **printed pages 31–32 (PDF pages 40–41)**.
+2. Inspect **Table 4.3 on printed page 34 (PDF page 43)**, paying attention to the algorithm labels and the instances actually tabulated.
+3. Read [Evidence and recovery notes](EVIDENCE_NOTES.md) alongside the result discussion and Figure 4.1.
+
+No build or installation command is available because the original implementation and runtime environment have not been recovered.
+
+## Results and verification
+
+The report's comparison table presents lower route distances for the search methods than for the greedy baseline. Those values remain historical reported results and have not been independently reproduced from original code or logs.
+
+Some conclusions need reconciliation with the table. The benchmark overview lists 17 instances, while Table 4.3 covers 13. Although the prose claims that GA has the lowest mean on every instance, the table lists lower ACO means for `E-n23-k3` and `E-n76-k7`. Other passages interchange ACO/SA values or labels. The [evidence notes](EVIDENCE_NOTES.md#result-statements-needing-reconciliation) identify the exact examples; the available evidence does not establish a universal winning algorithm.
+
+Archive checks verified that the preserved PDF has 64 pages and matches the original file byte for byte. This documentation refresh checks links and file integrity. Neither step reruns the experiments or resolves the discrepancies in the original results.
+
+## Repository guide
 
 | File | Purpose |
-|---|---|
-| `reports/EVRP_Report.pdf` | Unmodified 64-page report. |
-| `EVIDENCE_NOTES.md` | Scope of the recovered evidence and issues to check against the original experiments. |
-| `source_manifest.json` | Original filename, file size and SHA-256 checksum. |
+| --- | --- |
+| [Original report](reports/EVRP_Report.pdf) | Read the complete research study, figures and references |
+| [Evidence and recovery notes](EVIDENCE_NOTES.md) | Review result discrepancies, verification scope and missing artifacts |
+| [Source manifest](source_manifest.json) | Check the original filename, size, SHA-256 and report date |
 
-This recovery contains the report. The implementation, original experiment logs, benchmark files and editable report source have not yet been recovered, so the experiments cannot currently be reproduced from this archive. A working software package should be documented when those original files are found.
+## Limitations and next recovery steps
 
-## Reading the results
+The solver, C++ validator, benchmark files, exact run configurations, seed list, raw outputs and editable report source have not been recovered. Independent reproduction requires those artifacts before the comparison tables can be recalculated or contradictory labels resolved. A source-code reconstruction would be a new implementation, not the recovered original project.
 
-The report presents lower route distances for the search methods than the greedy baseline in its comparison table. Its numerical results remain historical reported results; they have not been independently rerun during archiving. Some prose and table labels require reconciliation, recorded in [the evidence notes](EVIDENCE_NOTES.md). This README therefore does not claim a universal winning algorithm or independently verified performance gains.
+## Attribution and provenance
 
-## 中文说明
+The original report credits **Yongjiang Liu** and names **Dr. Francisco Lobo** as supervisor. Its citations and original content remain unchanged. The [source manifest](source_manifest.json) records the preserved PDF; documentation commits describe later preservation and explanation rather than historical implementation milestones.
 
-这是 Yongjiang Liu 的电动车路径规划研究报告存档，主题是通过扰动、局部搜索和可行性修复，比较遗传算法、模拟退火和蚁群算法。当前保留的是原始报告；源代码、原始实验记录和可编辑论文源文件尚未恢复，不能仅凭这个仓库复现实验。说明文件区分了论文中的历史报告结果与本次整理实际核验的内容。
-
-## Preservation and reuse
-
-The report is preserved byte-for-byte. Archival documentation was prepared on 9 September 2026; this does not represent a new implementation milestone. No new license is assigned to the original report, cited material, university branding or third-party figures.
+No new license is assigned to the report, cited material, university branding or third-party figures. Retained references distinguish the study's methods and observations from the work it builds on.
