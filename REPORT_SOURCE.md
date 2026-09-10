@@ -27,3 +27,7 @@ The original GPLv3 `LICENSE` is preserved at its original source-root location. 
 ## Relationship to the solver
 
 These are the document's editable sources. The recovered Python implementation is available separately in [solver/](solver/main.py), with its baseline attribution in [Third-party notices](THIRD_PARTY_NOTICES.md). That March 2025 development snapshot has not been matched to the complete final experimental configuration. See [Evidence and recovery notes](EVIDENCE_NOTES.md) for the current status.
+
+## Overleaf check on 10 September 2026
+
+The existing `EVRP_Report` project was revisited. The free-plan online compilation timed out and reported a LaTeX line-break error, so that attempt did not produce a replacement PDF. The recovered original [64-page report](reports/EVRP_Report.pdf) remains the canonical reading copy; its SHA-256 is `81fa3163f9b8473c0096a869ea69d96bcb3af117e16bbe21380a9c86aa6b951c`. The source and original PDF are preserved without silent repairs or changes to the reported experiments.
