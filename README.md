@@ -1,76 +1,78 @@
 # Perturbation is All You Need
 
-A research study of the **Electric Vehicle Routing Problem (EVRP)**: how to improve delivery routes while respecting vehicle load and battery constraints. Yongjiang Liu's report compares a greedy construction baseline with three separately evaluated search methods, examining route quality, variability and feasibility.
+**Yongjiang Liu's Electric Vehicle Routing Problem (EVRP) research project.** The study investigates how route perturbation, local search and feasibility repair can improve delivery routes under vehicle-load and battery constraints. It compares a greedy baseline, a genetic algorithm, simulated annealing and ant colony optimisation.
 
-**[Read the original 64-page report](reports/EVRP_Report.pdf)** or explore its **[restored LaTeX source](report-source/main.tex)**. Its cover is dated April 2025 and names the University of Manchester School of Computer Science and supervisor Dr. Francisco Lobo.
+**[Read the original 64-page report](reports/EVRP_Report.pdf)** · **[Explore the Python solver](solver/main.py)** · **[View the LaTeX source](report-source/main.tex)**
 
-> **中文概述：** 本研究关注电动车路径规划中的载重与电量约束，比较贪心构造、遗传算法、模拟退火和蚁群算法，并讨论扰动、局部搜索与可行性修复。原始 PDF 与 Overleaf 论文源码均已恢复；另已在本地找回协作 Python 求解器快照，正在核对上游来源、个人贡献及其与最终论文的对应关系，暂未纳入公开仓库。
+> **中文概述：** 这是刘勇江的电动车路径规划研究项目，研究载重、电量与充电约束下的路径优化，比较贪心构造、遗传算法、模拟退火和蚁群算法。仓库保留原始论文、LaTeX 图表，以及恢复的 Python 开发版本、17 个基准文件和历史结果。基础框架与 GSGA 保留其开源来源；找回的 2025 年 3 月开发版本尚未确认为最终论文全部实验所用版本。
 
 ## Project at a glance
 
 | Item | Details |
 | --- | --- |
-| Project type | Individual research report |
-| Institution and date | University of Manchester, School of Computer Science; April 2025 |
-| Author and supervisor | Yongjiang Liu; Dr. Francisco Lobo |
-| Methods | Greedy construction, Genetic Algorithm, Simulated Annealing, Ant Colony Optimization, local search and feasibility checks |
-| Implementation described | Search methods and a C++ solution validator described in the report; a separately recovered Python snapshot requires version and attribution checks |
-| Available artifacts | Original PDF, 58 original LaTeX/source-asset files, recovery notes and integrity manifests |
-| Status | Report and editable source restored; shared solver snapshot recovered locally, with final-report correspondence and contributor attribution pending |
+| Project author | Yongjiang Liu |
+| Institution | University of Manchester, School of Computer Science |
+| Report | April 2025; supervisor Dr. Francisco Lobo |
+| Main methods | Greedy construction, GA/GSGA, SA, ACO, local search and feasibility repair |
+| Language and libraries | Python, NumPy, pandas, Matplotlib, Loguru |
+| Preserved implementation | Latest recovered development snapshot: 12 March 2025 |
+| Available evidence | 15 Python files, a cleaned notebook, 17 benchmark inputs, historical outputs, original PDF and 58 report-source files |
 
-## Research questions
+## Research and implementation
 
-The study asks how to construct feasible EVRP routes, how perturbation and local search can improve them, and how alternative search strategies compare across benchmark instances. It considers both route distance and the variability of repeated runs, while retaining the problem's capacity and battery constraints.
+The project asks how perturbation can escape poor local solutions while keeping routes feasible. It builds on an existing Python EVRP and Greedy Search + Genetic Algorithm baseline; the inherited implementation is credited in [Third-party notices](THIRD_PARTY_NOTICES.md).
 
-## Design and method
-
-The report describes a multi-stage greedy route constructor as the baseline. It then evaluates three search approaches independently:
-
-| Method | Main search mechanism |
+| Method | Focus in this project |
 | --- | --- |
-| Genetic Algorithm (GA) | Evolutionary search and route refinement |
-| Simulated Annealing (SA) | Neighbourhood perturbations with temperature-controlled acceptance |
-| Ant Colony Optimization (ACO) | Pheromone-guided construction and local search |
+| Greedy / GSGA | Construction, evolutionary search and local route refinement; baseline adapted from the credited upstream project |
+| Simulated annealing | Multiple neighbourhood operators, temperature-controlled acceptance, reheating and local improvement |
+| Ant colony optimisation | Pheromone-guided construction, rank/Max-Min updates, perturbation and local repair |
 
-The described C++ validator checks depot boundaries, customer visits, vehicle capacity, battery feasibility and total route distance. Evaluation uses the IEEE WCCI 2020 EVRP benchmark family, with repeated runs, parameter settings and route visualizations discussed in the report.
+Additional PSO, VNS and branch-and-bound experiments are retained in the recovered source. The file named `MILP.py` describes a custom heuristic; it is not an exact mathematical-programming solver. These exploratory methods are separate from the report's main comparison.
 
-These are methods documented in the report. This repository supplies the written study and its editable source. The recovered shared Python snapshot is being assessed separately; its existence does not establish that every algorithm was authored independently by the report's author or that it generated the final tables.
+## Run a small example
 
-## Reading the report
+Create an isolated environment at the repository root, then use a fresh directory for run outputs:
 
-Start with the problem and constraints, then read the construction and search methods before interpreting the evaluation. For the numerical comparison:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+mkdir -p runs/quickstart
+cd runs/quickstart
+MPLBACKEND=Agg python ../../solver/main.py \
+  -p ../../solver/benchmark/E-n22-k4.evrp \
+  -a GreedySearch -n 1 --seed 12 -o ./greedy
+```
 
-1. Read the benchmark overview on **printed pages 31–32 (PDF pages 40–41)**.
-2. Inspect **Table 4.3 on printed page 34 (PDF page 43)**, paying attention to the algorithm labels and the instances actually tabulated.
-3. Read [Evidence and recovery notes](EVIDENCE_NOTES.md) alongside the result discussion and Figure 4.1.
+This writes a route-distance text file and route plot below `greedy/E-n22-k4/`. The original CLI accepts GreedySearch, GSGA, SA, ACO, PSO, VNS, BNB and MILP; the larger algorithms have hard-coded search budgets in solver/main.py. The preserved SA_test.py and ACO_test.py files are historical algorithm variants, not a pytest suite.
 
-For the document entry point, file layout and preserved build limitations, see [Report source and recovery](REPORT_SOURCE.md). No solver installation command is published while the recovered implementation's version, dependencies and provenance remain under review.
-
-## Results and verification
-
-The report's comparison table presents lower route distances for the search methods than for the greedy baseline. Those values remain historical reported results and have not been independently reproduced from original code or logs.
-
-Some conclusions need reconciliation with the table. The benchmark overview lists 17 instances, while Table 4.3 covers 13. Although the prose claims that GA has the lowest mean on every instance, the table lists lower ACO means for `E-n23-k3` and `E-n76-k7`. Other passages interchange ACO/SA values or labels. The [evidence notes](EVIDENCE_NOTES.md#result-statements-needing-reconciliation) identify the exact examples; the available evidence does not establish a universal winning algorithm.
-
-Archive checks verified that the preserved PDF has 64 pages and matches the original file byte for byte. The restored source contains 58 files copied byte for byte from the author's Overleaf export, including figures, bibliography and the license text supplied with that export. These checks do not rerun the experiments or resolve the discrepancies in the original results; recompilation from the restored source has not been verified in this recovery step.
+The original logger recreates .log in the working directory, and repeated commands reuse output filenames. Run in a new directory to preserve earlier results. The notebook's code cells are retained, while old output cells and machine metadata have been cleared. See [Running and verification](RUNNING.md) for the tested environment and the limits of the smoke checks.
 
 ## Repository guide
 
-| File | Purpose |
+| Location | Contents |
 | --- | --- |
-| [Original report](reports/EVRP_Report.pdf) | Read the complete research study, figures and references |
-| [Original LaTeX source](report-source/main.tex) | Explore the main document, chapters, bibliography and figure assets |
-| [Report source guide](REPORT_SOURCE.md) | Read source-entry, license and recovery-scope notes |
-| [Report-source manifest](report-source-manifest.json) | Verify every restored file against the original Overleaf ZIP |
-| [Evidence and recovery notes](EVIDENCE_NOTES.md) | Review result discrepancies, verification scope and missing artifacts |
-| [Source manifest](source_manifest.json) | Check the original filename, size, SHA-256 and report date |
+| [solver/](solver/main.py) | Recovered Python implementation and notebook |
+| [solver/benchmark/](solver/benchmark/) | 17 original EVRP benchmark inputs with their source comments |
+| [solver/result/](solver/result/) | Unmodified historical outputs; these are not newly reproduced results |
+| [reports/EVRP_Report.pdf](reports/EVRP_Report.pdf) | Original 64-page report |
+| [report-source/](report-source/main.tex) | Original LaTeX, bibliography, diagrams and plots |
+| [REPORT_SOURCE.md](REPORT_SOURCE.md) | Document entry point and preserved build details |
+| [EVIDENCE_NOTES.md](EVIDENCE_NOTES.md) | Experimental discrepancies and validation limits |
+| [solver-source-manifest.json](solver-source-manifest.json) | Recovered file hashes and publication transformations |
+| [report-source-manifest.json](report-source-manifest.json) | Integrity records for the 58 report-source files |
 
-## Limitations and next recovery steps
+## Results and reproducibility
 
-The editable report source is restored. A shared Python code snapshot with benchmark files and stored outputs has also been recovered locally. Its correspondence to the final April 2025 report, the authorship of its additions and the completeness of final experiment configurations remain unverified. The report's described C++ validator has not been identified in that Python snapshot. Independent reproduction requires these questions to be settled before its outputs can be used to recalculate the final tables or resolve contradictory labels.
+The report discusses repeated-run route distances, parameter sensitivity and route visualisations using the IEEE WCCI 2020 EVRP benchmark family. Its benchmark overview lists 17 instances, while Table 4.3 presents 13. Some narrative labels and numerical claims disagree with that table; [the evidence notes](EVIDENCE_NOTES.md#result-statements-needing-reconciliation) identify them.
 
-## Attribution and provenance
+The recovered March snapshot contains related SA/ACO mechanisms and partial stored outputs, but its parameters and results do not match the final comparison table. The historical output folders also contain duplicate labels and failed values. This release preserves that evidence without presenting it as a full reproduction or asserting a universal winning algorithm.
 
-The original report credits **Yongjiang Liu** and names **Dr. Francisco Lobo** as supervisor. Its citations and original content remain unchanged. The [source manifest](source_manifest.json) records the preserved PDF; documentation commits describe later preservation and explanation rather than historical implementation milestones.
+The original Python checker does not explicitly verify complete customer coverage and depot endpoints. The separate C++ validator described in the report has not been recovered. Passing the existing checker or a small smoke run does not establish complete EVRP correctness or final-paper performance.
 
-The Overleaf export's original [GPLv3 license text](report-source/LICENSE) is retained in its source directory. This preservation step makes no new license grant or authorship claim for the report, cited assets, university branding or the separate solver snapshot. Retained references distinguish the study's methods and observations from the work it builds on.
+## Authorship and preservation
+
+This is Yongjiang Liu's research project. The original report, source code and historical data are preserved with their actual recovery dates; no historical development commits have been invented. The published notebook excludes saved execution output and private machine metadata, and the source tree excludes bytecode, local logs and operating-system files.
+
+The baseline includes code from **Hien Vu / NeiH4207's evrp-python**, with the original MIT notice retained in [LICENSES/evrp-python-MIT.txt](LICENSES/evrp-python-MIT.txt). See [Third-party notices](THIRD_PARTY_NOTICES.md) for file-level attribution. The original report-source GPLv3 text is retained separately in [report-source/LICENSE](report-source/LICENSE); it is not a new license grant for unrelated material.

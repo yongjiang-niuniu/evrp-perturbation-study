@@ -17,10 +17,14 @@
     "report_source_directory": "report-source",
     "report_source_file_count": 58,
     "report_source_manifest": "report-source-manifest.json",
-    "shared_python_solver_snapshot_recovered_locally": true,
-    "solver_source_in_public_repository": false,
+    "python_solver_snapshot_recovered": true,
+    "solver_snapshot_date": "2025-03-12",
+    "solver_source_in_public_repository": true,
+    "solver_source_directory": "solver",
+    "solver_source_manifest": "solver-source-manifest.json",
     "solver_final_report_correspondence_verified": false,
-    "solver_contributor_attribution_verified": false,
-    "experiments_rerun": false
+    "project_ownership_confirmed_by_author": true,
+    "upstream_baseline_attribution_restored": true,
+    "final_report_experiments_rerun": false
   }
 }

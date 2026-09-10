@@ -26,4 +26,4 @@ The original GPLv3 `LICENSE` is preserved at its original source-root location. 
 
 ## Relationship to the solver
 
-These are the document's editable sources, not a solver implementation. A shared Python snapshot was recovered separately and is currently retained locally while its contributor history, upstream code and correspondence to the final report are reviewed. Its benchmark inputs and outputs are not a substitute for confirming the exact final experiments. See [Evidence and recovery notes](EVIDENCE_NOTES.md) for the current status.
+These are the document's editable sources. The recovered Python implementation is available separately in [solver/](solver/main.py), with its baseline attribution in [Third-party notices](THIRD_PARTY_NOTICES.md). That March 2025 development snapshot has not been matched to the complete final experimental configuration. See [Evidence and recovery notes](EVIDENCE_NOTES.md) for the current status.

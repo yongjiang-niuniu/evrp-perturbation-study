@@ -1,0 +1,270 @@
+{
+  "check_date": "2026-09-10",
+  "snapshot_date": "2025-03-12",
+  "scope": "Four single local workflow smokes on E-n22-k4; original Greedy CLI and reduced-constructor budgets for GA/SA/ACO. No algorithm edits; no original final performance reproduction.",
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 13:50:33) [Clang 22.1.3 ]",
+    "platform": "macOS-26.5.1-arm64-arm-64bit",
+    "packages": {
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "matplotlib": "3.10.7",
+      "loguru": "0.7.3"
+    }
+  },
+  "source_unchanged": true,
+  "source_and_copy_checks_before": 64,
+  "source_and_copy_checks_after": 64,
+  "cases": [
+    {
+      "algorithm": "GreedySearch",
+      "status": "completed",
+      "returncode": 0,
+      "timeout_seconds": 45,
+      "result_file_exists": true,
+      "route_plot_exists": true,
+      "invocation": {
+        "script": "solver/main.py",
+        "benchmark": "solver/benchmark/E-n22-k4.evrp",
+        "algorithm": "GreedySearch",
+        "runs": 1,
+        "seed": 12,
+        "working_directory": "new isolated directory"
+      }
+    },
+    {
+      "algorithm": "GSGA",
+      "status": "completed",
+      "returncode": 0,
+      "timeout_seconds": 45,
+      "summary": {
+        "algorithm": "GSGA",
+        "params": {
+          "population_size": 10,
+          "generations": 2,
+          "crossover_prob": 0.85,
+          "mutation_prob": 0.75,
+          "elite_rate": 0.2
+        },
+        "seed": 12,
+        "reported_tour_length": 425.2958566459967,
+        "finite_reported_tour_length": true,
+        "original_validator_result": true,
+        "required_customer_count": 21,
+        "observed_customer_count": 21,
+        "missing_customer_ids": [],
+        "unexpected_customer_ids": [],
+        "duplicate_customer_ids": [],
+        "tours": [
+          [
+            0,
+            19,
+            21,
+            17,
+            20,
+            26,
+            0
+          ],
+          [
+            0,
+            13,
+            11,
+            4,
+            3,
+            25,
+            10,
+            6,
+            8,
+            0
+          ],
+          [
+            0,
+            9,
+            7,
+            5,
+            2,
+            1,
+            29,
+            0
+          ],
+          [
+            0,
+            12,
+            15,
+            18,
+            16,
+            14,
+            0
+          ]
+        ],
+        "tour_count": 4,
+        "maximum_vehicle_count": 4,
+        "observed_depot_endpoints": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "scope": "One short-budget workflow smoke; original validity flag plus customer-coverage observations, not an independent full EVRP validator or benchmark experiment."
+      }
+    },
+    {
+      "algorithm": "SA",
+      "status": "completed",
+      "returncode": 0,
+      "timeout_seconds": 45,
+      "summary": {
+        "algorithm": "SA",
+        "params": {
+          "initial_temp": 10000,
+          "cooling_rate": 0.99,
+          "min_temp": 1e-06,
+          "max_iter": 5
+        },
+        "seed": 12,
+        "reported_tour_length": 410.37856619855853,
+        "finite_reported_tour_length": true,
+        "original_validator_result": true,
+        "required_customer_count": 21,
+        "observed_customer_count": 21,
+        "missing_customer_ids": [],
+        "unexpected_customer_ids": [],
+        "duplicate_customer_ids": [],
+        "tours": [
+          [
+            0,
+            11,
+            4,
+            3,
+            25,
+            1,
+            6,
+            8,
+            10,
+            0
+          ],
+          [
+            0,
+            12,
+            9,
+            5,
+            2,
+            29,
+            7,
+            0
+          ],
+          [
+            0,
+            15,
+            18,
+            26,
+            20,
+            21,
+            17,
+            14,
+            0
+          ],
+          [
+            0,
+            13,
+            19,
+            16,
+            0
+          ]
+        ],
+        "tour_count": 4,
+        "maximum_vehicle_count": 4,
+        "observed_depot_endpoints": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "scope": "One short-budget workflow smoke; original validity flag plus customer-coverage observations, not an independent full EVRP validator or benchmark experiment."
+      }
+    },
+    {
+      "algorithm": "ACO",
+      "status": "completed",
+      "returncode": 0,
+      "timeout_seconds": 45,
+      "summary": {
+        "algorithm": "ACO",
+        "params": {
+          "num_ants": 3,
+          "generations": 2,
+          "alpha": 1.0,
+          "beta": 2.0,
+          "rho": 0.1,
+          "q": 100,
+          "perturb_rate": 0.05,
+          "local_search_freq": 2,
+          "elite_count": 1,
+          "k_nearest": 20,
+          "intensive_local_search": false,
+          "seed": 12
+        },
+        "seed": 12,
+        "reported_tour_length": 406.5488130864755,
+        "finite_reported_tour_length": true,
+        "original_validator_result": true,
+        "required_customer_count": 21,
+        "observed_customer_count": 21,
+        "missing_customer_ids": [],
+        "unexpected_customer_ids": [],
+        "duplicate_customer_ids": [],
+        "tours": [
+          [
+            0,
+            11,
+            4,
+            3,
+            25,
+            1,
+            6,
+            8,
+            10,
+            0
+          ],
+          [
+            0,
+            29,
+            2,
+            5,
+            7,
+            9,
+            12,
+            0
+          ],
+          [
+            0,
+            15,
+            18,
+            26,
+            20,
+            21,
+            17,
+            14,
+            0
+          ],
+          [
+            0,
+            13,
+            19,
+            16,
+            0
+          ]
+        ],
+        "tour_count": 4,
+        "maximum_vehicle_count": 4,
+        "observed_depot_endpoints": [
+          true,
+          true,
+          true,
+          true
+        ],
+        "scope": "One short-budget workflow smoke; original validity flag plus customer-coverage observations, not an independent full EVRP validator or benchmark experiment."
+      }
+    }
+  ]
+}
