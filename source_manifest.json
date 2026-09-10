@@ -7,6 +7,20 @@
   "preservation": "byte-identical copy",
   "original_report_date": "April 2025",
   "author_on_cover": "Yongjiang Liu",
-  "source_code_recovered": false,
-  "experiments_rerun": false
+  "initial_archive_status": {
+    "source_code_recovered": false,
+    "experiments_rerun": false
+  },
+  "recovery_update": {
+    "date": "2026-09-10",
+    "report_source_recovered": true,
+    "report_source_directory": "report-source",
+    "report_source_file_count": 58,
+    "report_source_manifest": "report-source-manifest.json",
+    "shared_python_solver_snapshot_recovered_locally": true,
+    "solver_source_in_public_repository": false,
+    "solver_final_report_correspondence_verified": false,
+    "solver_contributor_attribution_verified": false,
+    "experiments_rerun": false
+  }
 }

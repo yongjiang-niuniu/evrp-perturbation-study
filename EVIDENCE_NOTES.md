@@ -2,12 +2,20 @@
 
 These notes preserve the original report and identify the evidence needed for a reproducible project release.
 
-## Verified during local recovery
+## Initial report recovery, 9 September 2026
 
 - The original PDF has 64 pages. Its cover names Yongjiang Liu and dates the report April 2025.
 - The file was copied without modification; `source_manifest.json` records its SHA-256 hash.
 - Local filename and source-project searches found no corresponding implementation or raw experimental outputs in Desktop, Documents or Downloads. A separate copy under the HPC dissertation reference folder is not a recovered EVRP software implementation.
 - Report text scanning found no email addresses, student-number labels or password/secret/token mentions. This is a limited text check, not a blanket redistribution clearance.
+
+## Additional recovery, 10 September 2026
+
+- The author's Overleaf project yielded 58 original files, now preserved in [report-source/](report-source/main.tex). Each extracted file matches its ZIP member byte for byte; [report-source-manifest.json](report-source-manifest.json) records hashes and archive provenance. The original PDF remains unchanged.
+- The package contains the main LaTeX document, five chapters, front matter, bibliography, figures and its original GPLv3 `LICENSE`. The license file is retained as supplied; no new license scope is asserted for separate materials.
+- A shared Python EVRP snapshot with 17 benchmark files and stored outputs was separately recovered locally. It is not included in this public repository while upstream attribution, individual contributions and its relationship to the final report are being checked. A received shared snapshot is not itself proof of sole authorship or final-submission identity.
+- The earlier absence of code in the checked GitHub repository and its backup remains a historical fact: its first commit contained only the report and manifest, followed by documentation changes. Finding a later local recovery source does not indicate that code was deleted from that GitHub history.
+- The restored report source was checked for unsafe archive paths, private contact details and credential-like text. The review found author/supervisor names, university information and scholarly references; no private email address or credential pattern was found in its text. This is a scoped static check, not a claim to have revalidated every cited asset.
 
 ## Result statements needing reconciliation
 
@@ -21,8 +29,8 @@ The following refer to the original report's printed page numbers (PDF page numb
 
 ## Recovery priorities
 
-- Recover the original solver and C++ validator source, preserving existing Git history if available.
-- Recover the exact experiment configuration, seed list, benchmark provenance and raw route/result outputs.
+- Establish which recovered Python files and results correspond to the final report, preserving the received snapshot and upstream attribution. Continue looking for the described C++ validator or a later final solver version.
+- Confirm individual contributions, exact experiment configuration, seed list and benchmark/result provenance before publishing the shared implementation.
 - Recalculate summary tables from those outputs and reconcile the narrative using a separate documented revision.
 - Add setup and reproduction instructions based on the recovered files and an actual verification run.
 

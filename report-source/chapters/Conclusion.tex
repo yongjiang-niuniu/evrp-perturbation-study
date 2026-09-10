@@ -1,0 +1,85 @@
+\section{Summary of Work}
+
+This study addresses the Electric Vehicle Routing Problem (EVRP), a challenging extension of the classical Vehicle Routing Problem (VRP) that incorporates energy constraints alongside traditional load and route constraints.  
+To tackle this problem, three advanced metaheuristic frameworks were developed: a Greedy-Search Genetic Algorithm (GA), a Simulated Annealing (SA), and an optimized Ant Colony Optimization (ACO) method.  
+Each framework integrates problem-specific perturbation mechanisms, multi-stage local search procedures, and adaptive parameter control strategies to effectively balance global exploration and local refinement.
+
+The proposed algorithms were systematically evaluated on a suite of benchmark instances from the IEEE WCCI-2020 EVRP Competition, encompassing both small- and large-scale scenarios with varying levels of complexity.  
+A unified experimental protocol was adopted, measuring metrics such as total travel distance, feasibility rate, solution stability (standard deviation), and computational efficiency across multiple independent runs.  
+Furthermore, comprehensive ablation studies were conducted to assess the individual contributions of critical components, including local search operators, perturbation-based diversification, and adaptive operator selection mechanisms.
+
+Experimental results demonstrate that the perturbation-driven metaheuristic frameworks significantly outperform the baseline Greedy Search in both solution quality and robustness.  
+Among the three proposed methods, GA consistently achieves the best overall performance across all instances, followed by ACO and SA.  
+
+
+\section{Achievement}
+
+This research systematically addressed the challenges of the Electric Vehicle Routing Problem through the design, development, and evaluation of perturbation-driven metaheuristic frameworks.  
+A systematic literature review was first conducted to critically survey existing metaheuristic methods for EVRP and related vehicle routing variants, highlighting the role of perturbation mechanisms in improving search effectiveness.  
+Baseline implementations of Genetic Algorithm, Simulated Annealing, and Ant Colony Optimization tailored for energy-constrained VRPs were developed, ensuring full compliance with load, energy, and feasibility constraints.  
+Building upon insights from the literature, structured perturbation strategies were designed and incorporated into SA and ACO, inspired by the success of adaptive perturbation in GA, thereby enhancing both exploration and exploitation capacities.  
+Domain-specific repair mechanisms and multi-stage local search enhancements were also integrated into each algorithm, substantially improving solution feasibility, convergence stability, and overall route quality.  
+Extensive experiments were conducted on the standardized EVRP benchmark set, systematically comparing the perturbation-enhanced algorithms against baseline methods in terms of total travel distance, robustness across multiple runs, and computational efficiency.  
+Finally, the scalability and generalizability of the proposed frameworks were demonstrated through consistent performance improvements across both small- and large-scale EVRP instances.
+
+
+\section{Limitation}
+
+While the proposed perturbation-driven metaheuristic frameworks demonstrate strong performance on the EVRP benchmark datasets, several limitations are acknowledged.
+
+First, the algorithms were primarily evaluated on static benchmark instances with deterministic travel distances and fixed energy consumption rates.  
+In real-world EVRP applications, additional complexities such as dynamic customer demands, variable traffic conditions, and stochastic energy consumption may significantly impact solution quality.
+
+Second, although perturbation and local search strategies effectively improve solution feasibility and quality, they introduce additional computational overhead, especially for large-scale instances.  
+The scalability of the current frameworks may be constrained when addressing very large, real-time EVRP scenarios without further acceleration mechanisms.
+
+Third, parameter settings for each algorithm were tuned through manual grid search based on benchmark performance.  
+Automated or adaptive hyperparameter optimization strategies were not explored, which could potentially enhance algorithmic robustness across different problem domains.
+
+Finally, the current study focuses on single-objective optimization, minimizing only the total travel distance.  
+Realistic EVRP formulations often involve multiple conflicting objectives, such as minimizing energy consumption, customer service time windows, or environmental impact, which remain to be addressed in future work.
+
+\section{Future Work}
+\subsection{Enhancing Intelligent and Dynamic Perturbation Mechanisms}
+
+While the current perturbation strategies have proven effective in improving solution quality, future research should focus on developing more intelligent and dynamically adaptive perturbation mechanisms tailored to the evolving characteristics of EVRP solutions.  
+Rather than relying on static or manually designed perturbation operators, future approaches should explore adaptive strategies that adjust perturbation intensity, operator selection, and targeted regions based on real-time search feedback~\cite{hulagu2021electric}.
+
+For instance, dynamically identifying "critical zones"—such as densely clustered customer areas or segments with near-battery depletion—and applying targeted perturbations could more efficiently guide the search away from local optima.  
+Moreover, integrating learning-based frameworks, such as reinforcement learning for operator selection or self-tuning mechanisms for perturbation strength based on search progress, presents a promising avenue to enhance both exploration and exploitation capabilities~\cite{liu2023electric}.
+
+Designing perturbation mechanisms that are sensitive to solution structure, instance complexity, and current search stagnation will be crucial for enabling scalable, adaptive, and robust EVRP optimization in increasingly realistic and dynamic environments.
+
+
+\subsection{Enhancing Problem Modeling Realism}
+
+An important avenue for future research is to advance the realism of EVRP problem formulations.  
+While most existing studies focus on minimizing total travel distance, practical logistics operations often prioritize minimizing overall operational costs, encompassing factors such as energy consumption, driver salaries, and vehicle maintenance or depreciation.  
+Furthermore, with growing pressure to achieve sustainable transportation goals, future EVRP models should integrate environmental objectives, such as minimizing total energy consumption or carbon emissions, thus aligning optimization efforts with green logistics strategies.
+
+Energy consumption modeling also warrants further sophistication.  
+Instead of assuming a constant consumption rate per unit distance, future work should incorporate dynamic factors including traffic congestion, road elevation changes, weather conditions, varying vehicle payloads, regenerative braking, and auxiliary energy usage (e.g., heating and cooling systems).  
+Accounting for these real-world influences is essential for building robust and practically deployable EVRP solutions~\cite{fang2025two}.
+
+Additionally, the common assumption of homogeneous fleets limits the applicability of many current models.  
+Future research should extend EVRP formulations to heterogeneous or mixed fleets, accommodating both electric and internal combustion vehicles with diverse capacities, driving ranges, and regulatory restrictions, such as limited access in low-emission zones.  
+Finally, a more realistic depiction of charging operations is needed: instead of assuming uniform recharging behavior, future models should capture nonlinear charging dynamics, where charging rates vary based on the battery’s state of charge and external grid conditions~\cite{zhang2023robust}.
+
+
+
+\subsection{Incorporating Operational Constraints and Charging Technologies}
+
+Another important avenue for future research is to enrich the operational realism of EVRP models. Current approaches often oversimplify the charging process, typically assuming uniform charging rates and ignoring real-world infrastructure limitations~\cite{rahman2016review}.  
+Future studies should model the coexistence of multiple charging technologies—including Level I (slow charging), Level II (standard charging), and Level III (fast charging)—and account for their availability not only at public facilities but also at customer sites. Key factors such as varying investment costs, installation feasibility, and heterogeneous charging speeds should be incorporated to better reflect practical deployment scenarios~\cite{margaritis2016electric,awasthi2017optimal}.
+
+Moreover, modeling dynamic charging environments is crucial, where charging speeds, costs, and grid availability fluctuate over time. Capturing phenomena such as peak versus off-peak electricity pricing, daily variations in charging performance, and the influence of smart grid load management would significantly improve the realism of EVRP models.
+
+Beyond achieving feasibility, future EVRP frameworks should explicitly aim to \textbf{minimize the number of charging stops}. Reducing charging frequency not only enhances route efficiency but also shortens operational delays and lowers energy expenditures. Achieving this requires a tighter integration between routing decisions and charging planning.
+
+Additionally, future models should incorporate realistic operational constraints, such as legal limits on driving hours, mandatory driver rest periods, and flexible customer service windows~\cite{xu2017joint}.  
+Investigating the alignment of driver breaks with charging opportunities could further enhance schedule efficiency and practicality.  
+
+Finally, jointly optimizing both vehicle routing and charging station placement remains an open and promising research challenge that could yield substantial operational benefits.
+
+
+

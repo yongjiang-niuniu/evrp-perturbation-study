@@ -1,0 +1,112 @@
+\documentclass[12pt]{report}
+% English hyphenation
+\usepackage[british]{babel}
+% Links
+\usepackage[breaklinks=true]{hyperref}
+% Images
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\usepackage[noabbrev]{cleveref}
+
+\crefname{appsec}{Appendix}{Appendices}
+
+\usepackage[utf8]{inputenc}
+\usepackage{csquotes}
+\usepackage{booktabs} % 加在导言区，只需要引入一次
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{esdiff}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[a4paper, headheight=15pt]{geometry}
+\usepackage{algorithm}
+\usepackage[load-configurations=abbreviations, binary-units=true]{siunitx}
+\usepackage{algpseudocode}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+
+% Source images
+\newcommand{\imagesource}[1] {\caption*{\begin{footnotesize} Source: \url{#1} \end{footnotesize}}}
+
+% Appendix
+\usepackage[toc,page]{appendix}
+% Change name of toc
+\renewcommand*\contentsname{Table of Contents}
+
+\usepackage[style=numeric,sorting=none]{biblatex}
+\addbibresource{bibliography.bib}
+
+\title{}
+\author{}
+\date{April 2023}
+
+
+\begin{document}
+
+\input{other/titlepage.tex}
+\newpage
+\input{other/abstract.tex}
+\newpage
+\input{other/acknowledgements.tex}
+\newpage
+\input{other/abb.tex}
+
+\pagenumbering{roman}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+
+
+\chapter{Introduction}
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\input{chapters/Introduction.tex}
+\label{sec:Introduction}
+\newpage
+
+\chapter{Background}
+\label{sec:Background}
+\input{chapters/Background.tex}
+\newpage
+
+\chapter{Methodology}
+\newpage
+\label{sec:Methodology}
+\input{chapters/Methodology.tex}
+\newpage
+
+\chapter{Evaluation}
+\newpage
+\label{sec:Evaluation}
+\input{chapters/Evaluation.tex}
+\newpage
+
+\chapter{Conclusion}
+\newpage
+\label{sec:Conclusion}
+\input{chapters/Conclusion}
+\newpage
+
+\pagenumbering{roman}
+
+\printbibliography[heading=bibintoc]
+
+\end{document}
