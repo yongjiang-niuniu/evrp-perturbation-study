@@ -24,4 +24,4 @@ The upstream copyright and permission notice applies to its copied or adapted po
 
 The 17 files in `solver/benchmark/` match the upstream `benchmarks/evrp-2019/` inputs. Their original comments, including benchmark provenance, are retained. The report refers to the [IEEE WCCI 2020 EVRP competition](https://mavrovouniotis.github.io/EVRPcompetition2020/); source documentation and data notices govern reuse of the benchmark material.
 
-The report's bibliography and citations are preserved in `report-source/bibliography.bib`. The report-source package includes its original GPLv3 license text, kept at `report-source/LICENSE`; it is not used to relicense the separate Python baseline, university branding or cited figures.
+The report's bibliography and citations are preserved in `latex/bibliography.bib`. The report-source package includes its original GPLv3 license text, kept at `latex/LICENSE`; it is not used to relicense the separate Python baseline, university branding or cited figures.

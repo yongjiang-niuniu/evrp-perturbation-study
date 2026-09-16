@@ -5,13 +5,13 @@ These notes preserve the original report and identify the evidence needed for a 
 ## Initial report recovery, 9 September 2026
 
 - The original PDF has 64 pages. Its cover names Yongjiang Liu and dates the report April 2025.
-- The file was copied without modification; `source_manifest.json` records its SHA-256 hash.
+- The file was copied without modification; `docs/source_manifest.json` records its SHA-256 hash.
 - Local filename and source-project searches found no corresponding implementation or raw experimental outputs in Desktop, Documents or Downloads. A separate copy under the HPC dissertation reference folder is not a recovered EVRP software implementation.
 - Report text scanning found no email addresses, student-number labels or password/secret/token mentions. This is a limited text check, not a blanket redistribution clearance.
 
 ## Additional recovery, 10 September 2026
 
-- The author's Overleaf project yielded 58 original files, now preserved in [report-source/](report-source/main.tex). Each extracted file matches its ZIP member byte for byte; [report-source-manifest.json](report-source-manifest.json) records hashes and archive provenance. The original PDF remains unchanged.
+- The author's Overleaf project yielded 58 original files, now preserved in [latex/](../latex/main.tex). Each extracted file matches its ZIP member byte for byte; [report-source-manifest.json](report-source-manifest.json) records hashes and archive provenance. The original PDF remains unchanged.
 - The package contains the main LaTeX document, five chapters, front matter, bibliography, figures and its original GPLv3 `LICENSE`. The license file is retained as supplied; no new license scope is asserted for separate materials.
 - The project author confirmed the recovered Python implementation as his project. The cleaned 12 March 2025 development snapshot is now included in `solver/`, with 17 benchmark files and stored outputs. The inherited baseline retains the upstream author's MIT notice. Project ownership does not establish that this snapshot generated every table in the final report.
 - The earlier absence of code in the checked GitHub repository and its backup remains a historical fact: its first commit contained only the report and manifest, followed by documentation changes. Finding a later local recovery source does not indicate that code was deleted from that GitHub history.
@@ -19,7 +19,7 @@ These notes preserve the original report and identify the evidence needed for a 
 
 ## Python publication and validation scope
 
-- The 15 Python files, 17 benchmark inputs and 257 historical output files retain their recovered bytes. The notebook's source cells are unchanged; saved outputs, execution counters and machine metadata were cleared for publication. Bytecode, local logs and macOS metadata are excluded. `solver-source-manifest.json` records the transformations.
+- The 15 Python files, 17 benchmark inputs and 257 historical output files retain their recovered bytes. The notebook's source cells are unchanged; saved outputs, execution counters and machine metadata were cleared for publication. Bytecode, local logs and macOS metadata are excluded. `docs/solver-source-manifest.json` records the transformations.
 - The March snapshot's saved outputs are concentrated on E-n22-k4. Its notebook uses seed 12137 and 20 SA runs, whereas the final report describes different seeds and run counts. It is not a verified copy of the final experimental configuration.
 - Historical `ACO_result/E-n22-k4` run files duplicate the `GSGA/E-n22-k4` files. The two saved BNB objective values are infinite; five of ten MILP values are infinite. Directory labels and file counts must not be interpreted as independent successful experiments.
 - The Python checker checks several capacity/battery conditions but does not explicitly verify complete customer coverage or all depot endpoints. The report's separate C++ validator has not been found.

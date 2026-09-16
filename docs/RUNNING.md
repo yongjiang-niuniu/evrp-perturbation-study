@@ -6,7 +6,7 @@ The implementation in `solver/` preserves the 12 March 2025 development snapshot
 
 Verified environment: **Python 3.12.14**, macOS 26.5.1 arm64, NumPy 2.3.5, pandas 2.2.3, Matplotlib 3.10.7 and Loguru 0.7.3. `requirements.txt` pins those tested library versions. The original 2025 dependency lock was not recovered; other environments have not been verified.
 
-Use the [README quickstart](README.md#run-a-small-example) from the repository root. Start with the one-run GreedySearch example before increasing the algorithm's budget. The command produces:
+Use the [README quickstart](../README.md#run-a-small-example) from the repository root. Start with the one-run GreedySearch example before increasing the algorithm's budget. The command produces:
 
 ```text
 runs/quickstart/
@@ -31,7 +31,7 @@ All four cases ran in isolated working directories, with headless plotting, seed
 | SA | Five iterations with original initialisation | Exit 0; finite result; original checker accepted; all 21 customers visited once; depot endpoints present |
 | ACO | Three ants, two generations, intensive local search disabled | Exit 0; finite final result; original checker accepted; all 21 customers visited once; depot endpoints present |
 
-The ACO log included invalid intermediate ant solutions. The final retained route passed the checks above; this does not mean every generated route was feasible. A portable summary of the observed checks and exact constructor parameters is in [verification/smoke-2026-09-10.json](verification/smoke-2026-09-10.json).
+The ACO log included invalid intermediate ant solutions. The final retained route passed the checks above; this does not mean every generated route was feasible. A portable summary of the observed checks and exact constructor parameters is in [verification/smoke-2026-09-10.json](../verification/smoke-2026-09-10.json).
 
 Source and benchmark hashes were checked before and after execution. No algorithm or benchmark input was changed, and the preserved historical outputs were not overwritten.
 
